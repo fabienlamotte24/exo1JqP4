@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="assets/jq/jquery-3.2.1.js"></script>
+    <title>Exercice 1</title>
+  </head>
+  <body>
+    <select id="selector">
+      <option value="pierre" id="pierre">pierre</option>
+      <option value="feuille" id="feuille">feuille</option>
+      <option value="ciseaux" id="ciseaux">ciseaux</option>
+    </select>
+    <button type="button" name="button" id="shifumi">Shifumi</button>
+    <textarea name="name" rows="8" cols="80" id="text"></textarea>
+  </body>
+  <script>
+      var victoire = 0;
+      var defaite = 0;
+  $('#shifumi').click(function(){//Action lors du clic
+      var playerSelection = $('#selector').val();//Prise en valeur de la sélection du joueur
+      var random = Math.floor(Math.random()*3+1);//Valeur aléatoire
+          if (random == 1) {//Traduction du choix de l'IA
+            random = 'pierre';
+                if((playerSelection == 'pierre') && (random == 'pierre')){
+                  alert(playerSelection + ' vs ' + random + ' = match nul... Recommencez !');
+                } else if((playerSelection == 'feuille') && (random == 'pierre')){
+                  victoire++;
+                    alert(playerSelection + ' vs ' + random + ' = Gagné !');
+                } else {
+                  defaite++;
+                    alert(playerSelection + ' vs ' + random + ' = Perdu...');
+                }
+          } else if (random == 2){
+            random = 'feuille';
+                if((playerSelection == 'feuille') && (random == 'feuille')){
+                  alert(playerSelection + ' vs ' + random + ' = match nul... Recommencez !');
+                } else if((playerSelection == 'ciseaux') && (random == 'feuille')){
+                  victoire++;
+                    alert(playerSelection + ' vs ' + random + ' = Gagné !');
+                } else {
+                  defaite++;
+                    alert(playerSelection + ' vs ' + random + ' = Perdu...');
+                }
+          } else {
+            random = 'ciseaux';
+                if((playerSelection == 'ciseaux') && (random == 'ciseaux')){
+                  alert(playerSelection + ' vs ' + random + ' = match nul... Recommencez !');
+                } else if((playerSelection == 'pierre') && (random == 'ciseaux')){
+                  victoire++;
+                    alert(playerSelection + ' vs ' + random + ' = Gagné !');
+                } else {
+                  defaite++;
+                    alert(playerSelection + ' vs ' + random + ' = Perdu...');
+                }
+          }
+      var pourcentage = (victoire / defaite)*100;
+      $('textarea').text('Vous cumulez ' + victoire + ' victoires et ' + defaite + ' défaites !\nCela vous fait un pourcentage de ' + pourcentage + ' % !');
+});
+  </script>
+</html>
